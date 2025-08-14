@@ -6,11 +6,11 @@ const User = require("../modle/user");
 // ✅ CREATE: Register new user
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {  email, password } = req.body;
 
     // Basic validation
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: "Name, email, and password are required." });
+    if ( !email || !password) {
+      return res.status(400).json({ error: " email, and password are required." });
     }
 
     // Check if user already exists
@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
 
     // Create user (store email normalized)
     const newUser = await User.create({
-      name,
+      
       email: email.toLowerCase(),
       password: hashed,
     });
